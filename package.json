@@ -1,0 +1,25 @@
+{
+  "name": "yt-to-mp3-bot",
+  "version": "1.0.0",
+  "description": "Telegram Bot for converting YouTube videos to mp3.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sk8higher/yt-to-mp3-bot.git"
+  },
+  "author": "sk8higher",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sk8higher/yt-to-mp3-bot/issues"
+  },
+  "homepage": "https://github.com/sk8higher/yt-to-mp3-bot#readme",
+  "dependencies": {
+    "node-telegram-bot-api": "^0.59.0"
+  },
+  "devDependencies": {
+    "youtube-mp3-downloader": "^0.7.11"
+  }
+}
