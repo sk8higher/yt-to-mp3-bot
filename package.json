@@ -1,5 +1,6 @@
 {
   "name": "yt-to-mp3-bot",
+  "type": "module",
   "version": "1.0.0",
   "description": "Telegram Bot for converting YouTube videos to mp3.",
   "main": "index.js",

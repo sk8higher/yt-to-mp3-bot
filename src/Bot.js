@@ -1,6 +1,8 @@
-import { YD } from './Downloader.js';
 import TelegramBot from 'node-telegram-bot-api';
+
+import { YD } from './Downloader.js';
 import linkParser from './LinkParser.js';
+import clearDirectory from './ClearDirectory.js';
 
 // Getting bot token from environment variable
 const token = process.env.BOT_TOKEN;
@@ -32,14 +34,16 @@ bot.on('message', (msg) => {
     .then((message) => {
       lastMessageId = message.message_id;
     })
-    .catch((err) => {});
+    .catch((err) => {
+      console.log(err);
+    });
 
   // TODO: add progress in message
   YD.on('progress', function (progress) {
     bot.editMessageText(
       `Progress: ${Number.parseInt(progress.progress.percentage)}/100`,
-    { chat_id: chatId, message_id: lastMessageId }
-  );
+      { chat_id: chatId, message_id: lastMessageId }
+    );
     console.log(progress.progress.percentage);
   });
 
@@ -47,9 +51,14 @@ bot.on('message', (msg) => {
   YD.on('finished', function (err, data) {
     outPath = data.file;
 
-    bot.sendAudio(chatId, outPath).catch((error) => {
-      console.log(error);
-    });
+    bot
+      .sendAudio(chatId, outPath)
+      .then(() => {
+        clearDirectory();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   });
 
   YD.on('error', function (error) {
