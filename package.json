@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/sk8higher/yt-to-mp3-bot#readme",
   "dependencies": {
+    "netlify-lambda": "^2.0.15",
     "node-telegram-bot-api": "^0.59.0"
   },
   "devDependencies": {
